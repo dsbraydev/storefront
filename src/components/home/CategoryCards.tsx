@@ -5,7 +5,7 @@ import { getCategoryMeta } from '../../utils/categoryMeta'
 
 function CategorySkeleton() {
   return (
-    <div className="h-40 rounded-2xl bg-gray-200 animate-pulse" />
+    <div className="h-40 rounded-2xl bg-gray-800 animate-pulse" />
   )
 }
 
@@ -14,7 +14,7 @@ export default function CategoryCards() {
 
   return (
     <section id="categories" className="scroll-mt-24">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Shop by Category</h2>
+      <h2 className="text-2xl font-bold text-white mb-6">Shop by Category</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => <CategorySkeleton key={i} />)

@@ -9,7 +9,7 @@ export interface CategoryMeta {
 
 export const categoryMeta: Record<string, CategoryMeta> = {
   "men's clothing": {
-    gradient: 'from-blue-500 to-indigo-600',
+    gradient: 'from-violet-400 to-violet-600',
     textColor: 'text-white',
     icon: Shirt,
   },
@@ -34,7 +34,7 @@ export const categoryMeta: Record<string, CategoryMeta> = {
 export function getCategoryMeta(category: string): CategoryMeta {
   return (
     categoryMeta[category] ?? {
-      gradient: 'from-indigo-500 to-indigo-700',
+      gradient: 'from-violet-500 to-violet-700',
       textColor: 'text-white',
       icon: Shirt,
     }

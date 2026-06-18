@@ -45,8 +45,8 @@ export default function CartPage() {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Shopping Cart</h1>
-          <div className="bg-white rounded-lg border border-gray-100 shadow-sm px-4 divide-y divide-gray-100">
+          <h1 className="text-2xl font-bold text-white mb-6">Shopping Cart</h1>
+          <div className="bg-gray-900 rounded-lg border border-gray-800 shadow-sm px-4 divide-y divide-gray-800">
             {items.map((item) => (
               <CartItem key={item.product.id} item={item} onRemove={handleRemove} />
             ))}

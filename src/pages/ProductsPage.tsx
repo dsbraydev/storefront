@@ -39,8 +39,8 @@ export default function ProductsPage() {
   if (isError) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
-        <p className="text-lg font-semibold text-gray-900">Something went wrong</p>
-        <p className="mt-1 text-sm text-gray-500">Could not load products. Please try again later.</p>
+        <p className="text-lg font-semibold text-white">Something went wrong</p>
+        <p className="mt-1 text-sm text-gray-400">Could not load products. Please try again later.</p>
       </div>
     )
   }
@@ -49,8 +49,8 @@ export default function ProductsPage() {
     <div className="flex flex-col gap-6">
       {/* Heading */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">All Products</h1>
-        <p className="text-sm text-gray-500 mt-1">
+        <h1 className="text-2xl font-bold text-white">All Products</h1>
+        <p className="text-sm text-gray-400 mt-1">
           {filtered.length} {filtered.length === 1 ? 'product' : 'products'}
           {search || activeCategory !== 'all' ? ' found' : ''}
         </p>
@@ -65,7 +65,7 @@ export default function ProductsPage() {
           placeholder="Search products…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-md border border-gray-300 pl-10 pr-4 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          className="w-full rounded-md bg-gray-900 border border-gray-700 pl-10 pr-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
         />
       </div>
 
@@ -76,7 +76,7 @@ export default function ProductsPage() {
       {categoriesLoading && (
         <div className="flex flex-wrap gap-2">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-8 w-24 rounded-full bg-gray-200 animate-pulse" />
+            <div key={i} className="h-8 w-24 rounded-full bg-gray-800 animate-pulse" />
           ))}
         </div>
       )}

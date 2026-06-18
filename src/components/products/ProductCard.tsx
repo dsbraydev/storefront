@@ -17,10 +17,10 @@ const ProductCard = memo(function ProductCard({ product, index = 0 }: ProductCar
 
   return (
     <div
-      className="group animate-fade-in bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+      className="group animate-fade-in bg-gray-900 rounded-xl shadow-sm border border-gray-800 overflow-hidden flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
       style={{ animationDelay: `${index * 40}ms` }}
     >
-      <div className="aspect-square p-6 flex items-center justify-center bg-gray-50">
+      <div className="aspect-square p-6 flex items-center justify-center bg-gray-800">
         <img
           src={product.image}
           alt={product.title}
@@ -29,34 +29,34 @@ const ProductCard = memo(function ProductCard({ product, index = 0 }: ProductCar
         />
       </div>
       <div className="p-4 flex flex-col flex-1 gap-2">
-        <span className="text-xs font-medium text-indigo-600 uppercase tracking-wide">
+        <span className="text-xs font-medium text-violet-600 uppercase tracking-wide">
           {product.category}
         </span>
-        <h3 className="text-sm font-semibold text-gray-900 line-clamp-2 leading-snug flex-1">
+        <h3 className="text-sm font-semibold text-white line-clamp-2 leading-snug flex-1">
           {product.title}
         </h3>
         <div className="flex items-center justify-between mt-1">
-          <span className="text-lg font-bold text-gray-900">
+          <span className="text-lg font-bold text-white">
             {formatCurrency(product.price)}
           </span>
           <div className="flex items-center gap-1">
             <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-            <span className="text-xs font-medium text-gray-700">{product.rating.rate}</span>
-            <span className="text-xs text-gray-400">({product.rating.count})</span>
+            <span className="text-xs font-medium text-gray-300">{product.rating.rate}</span>
+            <span className="text-xs text-gray-500">({product.rating.count})</span>
           </div>
         </div>
         <div className="flex gap-2 pt-1">
           <Link
             to={`/products/${product.id}`}
             state={{ product }}
-            className="flex-1 text-center text-sm font-medium px-3 py-1.5 rounded-md border border-gray-300 text-gray-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors"
+            className="flex-1 text-center text-sm font-medium px-3 py-1.5 rounded-md border border-gray-700 text-gray-300 hover:border-violet-500 hover:text-violet-500 transition-colors"
           >
             View
           </Link>
           <button
             onClick={() => addToCart(product)}
             disabled={adding !== 'idle'}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-indigo-600 text-white text-sm font-medium px-3 py-1.5 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors disabled:opacity-80"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-violet-600 text-white text-sm font-medium px-3 py-1.5 rounded-md hover:bg-violet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 transition-colors disabled:opacity-80"
           >
             {adding === 'loading' && <Spinner />}
             {adding === 'done' && <Check className="h-4 w-4" />}

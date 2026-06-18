@@ -11,8 +11,8 @@ export default function CategoryFilterButton({ label, isActive, onClick }: Categ
       aria-current={isActive ? 'true' : undefined}
       className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
         isActive
-          ? 'bg-indigo-600 text-white'
-          : 'bg-white border border-gray-300 text-gray-600 hover:border-indigo-400 hover:text-indigo-600'
+          ? 'bg-violet-600 text-white'
+          : 'bg-gray-800 border border-gray-700 text-gray-400 hover:border-violet-500 hover:text-violet-400'
       }`}
     >
       {label}

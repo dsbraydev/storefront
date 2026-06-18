@@ -11,11 +11,11 @@ import { handleImageError } from '../utils/imageFallback'
 
 const notFound = (
   <div className="flex flex-col items-center justify-center py-24 text-center">
-    <p className="text-lg font-semibold text-gray-900">Product not found</p>
-    <p className="mt-1 text-sm text-gray-500">This product may no longer be available.</p>
+    <p className="text-lg font-semibold text-white">Product not found</p>
+    <p className="mt-1 text-sm text-gray-400">This product may no longer be available.</p>
     <Link
       to="/products"
-      className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+      className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-violet-500 hover:text-violet-400 transition-colors"
     >
       <ArrowLeft className="h-4 w-4" />
       Back to Products
@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
     <div className="max-w-4xl mx-auto">
       <Link
         to="/products"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors mb-8"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-white transition-colors mb-8"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to Products
@@ -46,7 +46,7 @@ export default function ProductDetailPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Image */}
-        <div className="rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center p-8 aspect-square">
+        <div className="rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center p-8 aspect-square">
           <img
             src={product.image}
             alt={product.title}
@@ -57,28 +57,28 @@ export default function ProductDetailPage() {
 
         {/* Details */}
         <div className="flex flex-col gap-4">
-          <span className="text-xs font-medium text-indigo-600 uppercase tracking-wide">
+          <span className="text-xs font-medium text-violet-600 uppercase tracking-wide">
             {product.category}
           </span>
-          <h1 className="text-2xl font-bold text-gray-900 leading-snug">
+          <h1 className="text-2xl font-bold text-white leading-snug">
             {product.title}
           </h1>
           <RatingStars rate={product.rating.rate} count={product.rating.count} />
-          <span className="text-3xl font-extrabold text-gray-900">
+          <span className="text-3xl font-extrabold text-white">
             {formatCurrency(product.price)}
           </span>
 
-          <div className="border-t border-gray-100 pt-4">
-            <p className="text-sm text-gray-600 leading-relaxed">
+          <div className="border-t border-gray-800 pt-4">
+            <p className="text-sm text-gray-400 leading-relaxed">
               {product.description}
             </p>
           </div>
 
-          <div className="border-t border-gray-100 pt-4 mt-auto">
+          <div className="border-t border-gray-800 pt-4 mt-auto">
             <button
               onClick={() => product && addToCart(product)}
               disabled={adding !== 'idle'}
-              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-semibold py-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all disabled:opacity-80 text-base"
+              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold py-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 transition-all disabled:opacity-80 text-base"
             >
               {adding === 'loading' && <Spinner />}
               {adding === 'done' && <Check className="h-5 w-5" />}

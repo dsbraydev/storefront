@@ -20,7 +20,7 @@ export default function UndoToast({ message, onUndo, onDismiss, duration = DISMI
       <span>{message}</span>
       <button
         onClick={onUndo}
-        className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold"
+        className="text-violet-400 hover:text-violet-300 transition-colors font-semibold"
       >
         Undo
       </button>

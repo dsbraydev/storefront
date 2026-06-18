@@ -1,6 +1,6 @@
 export default function SkeletonCard() {
   return (
-    <div data-testid="skeleton-card" className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div data-testid="skeleton-card" className="bg-gray-900 rounded-xl shadow-sm border border-gray-800 overflow-hidden">
       <div className="aspect-square animate-shimmer" />
       <div className="p-4 flex flex-col gap-3">
         <div className="h-3 w-16 animate-shimmer rounded" />

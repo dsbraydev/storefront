@@ -18,8 +18,8 @@ export default function FeaturedProducts() {
   return (
     <section>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Featured Products</h2>
-        <SlideLink to="/products" className="text-sm font-medium text-indigo-600">
+        <h2 className="text-2xl font-bold text-white">Featured Products</h2>
+        <SlideLink to="/products" className="text-sm font-medium text-violet-600">
           View all <ArrowRight className="h-4 w-4" />
         </SlideLink>
       </div>

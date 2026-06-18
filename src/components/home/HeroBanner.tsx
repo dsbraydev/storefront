@@ -25,10 +25,10 @@ export default function HeroBanner() {
         <h1 className="animate-fade-in text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight"
           style={{ animationDelay: '80ms' }}>
           Shop the Latest<br />
-          <span className="text-indigo-200">Collection</span>
+          <span className="text-violet-200">Collection</span>
         </h1>
 
-        <p className="animate-fade-in mt-4 text-lg text-indigo-100 max-w-lg leading-relaxed"
+        <p className="animate-fade-in mt-4 text-lg text-violet-100 max-w-lg leading-relaxed"
           style={{ animationDelay: '160ms' }}>
           Discover quality products across clothing, electronics, and jewelry — all at prices you'll love.
         </p>
@@ -37,7 +37,7 @@ export default function HeroBanner() {
           style={{ animationDelay: '240ms' }}>
           <Link
             to="/products"
-            className="inline-flex items-center gap-2 bg-white text-indigo-700 font-semibold px-6 py-3 rounded-lg hover:bg-indigo-50 transition-colors shadow-md"
+            className="inline-flex items-center gap-2 bg-white text-violet-700 font-semibold px-6 py-3 rounded-lg hover:bg-violet-50 transition-colors shadow-md"
           >
             Shop Now
             <ArrowRight className="h-4 w-4" />
