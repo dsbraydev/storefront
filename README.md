@@ -55,22 +55,25 @@ Tests use [Vitest](https://vitest.dev) with [React Testing Library](https://test
 
 ```
 src/
+├── __tests__/       # Vitest + RTL test suite (cartReducer, pages, components)
 ├── components/
 │   ├── cart/        # CartItem, CartSummary
-│   ├── layout/      # Header, Layout
-│   ├── products/    # ProductCard, ProductGrid
-│   └── ui/          # SkeletonCard
-├── context/         # CartContext (useReducer)
-├── hooks/           # useCart, useProducts, useCategories
+│   ├── home/        # HeroBanner, CategoryCards, FeaturedProducts
+│   ├── layout/      # Header, Footer, Layout, ScrollToTop
+│   ├── products/    # ProductCard, ProductGrid, CategoryFilterButton
+│   └── ui/          # EmptyState, Spinner, SkeletonCard, ProductGridSkeleton,
+│                    #   DetailSkeleton, RatingStars, UndoToast, SlideLink, StartupLoader
+├── context/         # CartContext (useReducer + localStorage persistence)
+├── hooks/           # useCart, useProducts, useCategories, useFilteredProducts, useAddToCart
 ├── mocks/           # msw handlers and server (test only)
-├── pages/           # StorePage, CartPage
+├── pages/           # HomePage, ProductsPage, ProductDetailPage, CartPage
 ├── services/        # Axios instance + API functions
 ├── types/           # Shared TypeScript interfaces
-└── utils/           # formatCurrency
+└── utils/           # formatCurrency, imageFallback, categoryMeta
 ```
 
 ## Known Limitations
 
-- Cart state is in-memory only — it resets on page refresh (no localStorage persistence)
+- Cart state is persisted to `localStorage` — it survives page refreshes but is not synced across browser tabs or backed by a server
 - "Proceed to Checkout" is UI-only — no payment flow is implemented
 - The Fake Store API has no auth, pagination, or search endpoint — all filtering is client-side

@@ -63,13 +63,13 @@ describe('ProductsPage', () => {
     renderProductsPage()
     const allButton = await screen.findByRole('button', { name: /^all$/i })
     expect(allButton).toBeInTheDocument()
-    expect(allButton).toHaveClass('bg-indigo-600')
+    expect(allButton).toHaveClass('bg-violet-600')
   })
 
   it('pre-selects category from URL param', async () => {
     renderProductsPage("/products?category=electronics")
     const button = await screen.findByRole('button', { name: /electronics/i })
-    expect(button).toHaveClass('bg-indigo-600')
+    expect(button).toHaveClass('bg-violet-600')
   })
 
   it('filters products by category when a filter button is clicked', async () => {
