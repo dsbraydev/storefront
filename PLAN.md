@@ -81,12 +81,12 @@ src/
 
 ---
 
-### Phase 2 — Types & API Layer
-- [ ] `src/types/index.ts` — `Product`, `CartItem`, `CartState` interfaces
-- [ ] `src/services/api.ts` — Axios instance (`baseURL: https://fakestoreapi.com`) + `fetchProducts`, `fetchProductById`, `fetchCategories`
-- [ ] `src/hooks/useProducts.ts` — `useProducts()` and `useCategories()` TanStack Query hooks
+### Phase 2 — Types & API Layer ✅
+- [x] `src/types/index.ts` — `Product`, `CartItem`, `CartState` interfaces
+- [x] `src/services/api.ts` — Axios instance (`baseURL: https://fakestoreapi.com`) + `fetchProducts`, `fetchProductById`, `fetchCategories`
+- [x] `src/hooks/useProducts.ts` — `useProducts()` and `useCategories()` TanStack Query hooks
 
-**Verify:** Network tab shows API calls; TypeScript compiles clean
+**Verify:** Network tab shows API calls; TypeScript compiles clean ✅
 
 **Commit:** `feat: phase 2 — types and api layer`
 
