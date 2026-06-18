@@ -139,14 +139,14 @@ src/
 
 ---
 
-### Phase 7 — Polish & Animations
-- [ ] `ProductCard` fade-in on mount
-- [ ] Cart badge scale-pop when `totalItems` changes
-- [ ] Responsive layout audit (1/2/3-4 col grid; stacked/side-by-side cart)
-- [ ] Empty state on `StorePage` when no products match filters
-- [ ] Hover + focus states on all interactive elements
+### Phase 7 — Polish & Animations ✅
+- [x] `ProductCard` fade-in on mount (staggered by index × 40ms)
+- [x] Cart badge scale-pop when `totalItems` changes (via `key={totalItems}` remount)
+- [x] Responsive layout audit (1/2/3-4 col grid; stacked/side-by-side cart)
+- [x] Empty state on `StorePage` when no products match filters
+- [x] Hover + focus states on all interactive elements
 
-**Verify:** Breakpoints, animations, and empty states all work
+**Verify:** Breakpoints, animations, and empty states all work ✅
 
 **Commit:** `feat: phase 7 — polish and animations`
 

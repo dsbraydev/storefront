@@ -5,13 +5,17 @@ import { useCart } from '../../hooks/useCart'
 
 interface ProductCardProps {
   product: Product
+  index?: number
 }
 
-const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
+const ProductCard = memo(function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { dispatch } = useCart()
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-200">
+    <div
+      className="animate-fade-in bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-200"
+      style={{ animationDelay: `${index * 40}ms` }}
+    >
       <div className="aspect-square p-6 flex items-center justify-center bg-gray-50">
         <img
           src={product.image}
