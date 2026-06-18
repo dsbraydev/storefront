@@ -115,13 +115,13 @@ src/
 
 ---
 
-### Phase 5 — Cart UI
-- [ ] `src/components/cart/CartItem.tsx` — image, name, price, qty controls, remove button
-- [ ] `src/components/cart/CartSummary.tsx` — subtotal, count, checkout button (UI only)
-- [ ] `CartPage.tsx` — cart items list + summary + empty state
-- [ ] Wire `ProductCard` "Add to Cart" to `ADD_ITEM`
+### Phase 5 — Cart UI ✅
+- [x] `src/components/cart/CartItem.tsx` — image, name, price, qty controls, remove button
+- [x] `src/components/cart/CartSummary.tsx` — subtotal, count, checkout button (UI only)
+- [x] `CartPage.tsx` — cart items list + summary + empty state
+- [x] Wire `ProductCard` "Add to Cart" to `ADD_ITEM`
 
-**Verify:** Full flow: add → view cart → adjust qty → remove → empty state
+**Verify:** Full flow: add → view cart → adjust qty → remove → empty state ✅
 
 **Commit:** `feat: phase 5 — cart ui`
 

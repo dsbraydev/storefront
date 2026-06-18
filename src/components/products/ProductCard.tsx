@@ -1,12 +1,15 @@
 import { memo } from 'react'
 import type { Product } from '../../types'
 import { formatCurrency } from '../../utils/formatCurrency'
+import { useCart } from '../../hooks/useCart'
 
 interface ProductCardProps {
   product: Product
 }
 
 const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
+  const { dispatch } = useCart()
+
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-200">
       <div className="aspect-square p-6 flex items-center justify-center bg-gray-50">
@@ -27,7 +30,10 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
           <span className="text-lg font-bold text-gray-900">
             {formatCurrency(product.price)}
           </span>
-          <button className="bg-indigo-600 text-white text-sm font-medium px-3 py-1.5 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors">
+          <button
+            onClick={() => dispatch({ type: 'ADD_ITEM', payload: product })}
+            className="bg-indigo-600 text-white text-sm font-medium px-3 py-1.5 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors"
+          >
             Add to Cart
           </button>
         </div>
