@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { CartItem as CartItemType } from '../../types'
 import { useCart } from '../../hooks/useCart'
 import { formatCurrency } from '../../utils/formatCurrency'
@@ -6,7 +7,7 @@ interface CartItemProps {
   item: CartItemType
 }
 
-export default function CartItem({ item }: CartItemProps) {
+const CartItem = memo(function CartItem({ item }: CartItemProps) {
   const { dispatch } = useCart()
   const { product, quantity } = item
 
@@ -68,4 +69,6 @@ export default function CartItem({ item }: CartItemProps) {
       </span>
     </div>
   )
-}
+})
+
+export default CartItem

@@ -166,14 +166,14 @@ src/
 
 ---
 
-### Phase 9 — Final Cleanup
-- [ ] Performance audit — `React.memo`, `useCallback`, `useMemo` where measurable
-- [ ] Lazy load `CartPage` with `React.lazy` + `Suspense`
-- [ ] Write `README.md`
-- [ ] Remove all `console.log`s, unused imports, dead code
-- [ ] `npm run build` — zero TypeScript/lint errors
+### Phase 9 — Final Cleanup ✅
+- [x] Performance audit — `React.memo` on `CartItem` (list component); `ProductCard` already memoised; `useMemo` on filter logic
+- [x] Lazy load `CartPage` with `React.lazy` + `Suspense` (confirmed separate chunk in build output)
+- [x] Write `README.md`
+- [x] No `console.log`s found; no unused imports
+- [x] `npm run build` — zero TypeScript/lint errors; 27/27 tests pass
 
-**Verify:** Build clean; preview serves correctly; all tests pass
+**Verify:** Build clean; CartPage is a separate chunk; all tests pass ✅
 
 **Commit:** `feat: phase 9 — final cleanup`
 
