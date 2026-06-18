@@ -11,11 +11,18 @@ export default function CartSummary() {
         <span>Items ({totalItems})</span>
         <span>{formatCurrency(totalPrice)}</span>
       </div>
+      <div className="flex justify-between text-sm text-gray-600">
+        <span>Shipping</span>
+        <span className="text-green-600">Free</span>
+      </div>
       <div className="border-t border-gray-100 pt-4 flex justify-between font-bold text-gray-900">
         <span>Total</span>
         <span>{formatCurrency(totalPrice)}</span>
       </div>
-      <button className="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors">
+      <button
+        disabled={totalItems === 0}
+        className="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
         Proceed to Checkout
       </button>
     </div>

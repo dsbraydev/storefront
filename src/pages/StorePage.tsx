@@ -5,7 +5,7 @@ import SkeletonCard from '../components/ui/SkeletonCard'
 
 export default function StorePage() {
   const { data: products, isLoading, isError } = useProducts()
-  const { data: categories } = useCategories()
+  const { data: categories, isLoading: categoriesLoading, isError: categoriesError } = useCategories()
 
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
@@ -54,7 +54,17 @@ export default function StorePage() {
         />
       </div>
 
-      {categories && categories.length > 0 && (
+      {categoriesError && (
+        <p className="text-sm text-amber-600">Could not load category filters.</p>
+      )}
+      {categoriesLoading && (
+        <div className="flex flex-wrap gap-2">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-8 w-24 rounded-full bg-gray-200 animate-pulse" />
+          ))}
+        </div>
+      )}
+      {!categoriesError && !categoriesLoading && categories && categories.length > 0 && (
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setActiveCategory('all')}
