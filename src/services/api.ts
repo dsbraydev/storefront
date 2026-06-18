@@ -3,6 +3,7 @@ import type { Product } from '../types'
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL ?? 'https://fakestoreapi.com',
+  timeout: 10000,
 })
 
 export const fetchProducts = async (): Promise<Product[]> => {

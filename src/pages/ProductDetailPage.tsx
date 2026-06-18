@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, Star, Check } from 'lucide-react'
 import { useProducts } from '../hooks/useProducts'
 import { formatCurrency } from '../utils/formatCurrency'
-import { useCart } from '../hooks/useCart'
+import { useAddToCart } from '../hooks/useAddToCart'
 import Spinner from '../components/ui/Spinner'
 import DetailSkeleton from '../components/ui/DetailSkeleton'
+import { handleImageError } from '../utils/imageFallback'
 
 function RatingStars({ rate, count }: { rate: number; count: number }) {
   const filled = Math.round(rate)
@@ -28,18 +28,7 @@ function RatingStars({ rate, count }: { rate: number; count: number }) {
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { data: products, isLoading } = useProducts()
-  const { dispatch } = useCart()
-  const [adding, setAdding] = useState<'idle' | 'loading' | 'done'>('idle')
-
-  function handleAddToCart() {
-    if (!product) return
-    setAdding('loading')
-    dispatch({ type: 'ADD_ITEM', payload: product })
-    setTimeout(() => {
-      setAdding('done')
-      setTimeout(() => setAdding('idle'), 600)
-    }, 500)
-  }
+  const { adding, addToCart } = useAddToCart()
 
   if (isLoading) return <DetailSkeleton />
 
@@ -78,10 +67,7 @@ export default function ProductDetailPage() {
             src={product.image}
             alt={product.title}
             className="max-h-96 w-full object-contain"
-            onError={(e) => {
-              e.currentTarget.src =
-                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' fill='none' viewBox='0 0 24 24' stroke='%23d1d5db'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'/%3E%3C/svg%3E"
-            }}
+            onError={handleImageError}
           />
         </div>
 
@@ -106,7 +92,7 @@ export default function ProductDetailPage() {
 
           <div className="border-t border-gray-100 pt-4 mt-auto">
             <button
-              onClick={handleAddToCart}
+              onClick={() => product && addToCart(product)}
               disabled={adding !== 'idle'}
               className="w-full inline-flex items-center justify-center gap-2 bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors disabled:opacity-80 text-base"
             >

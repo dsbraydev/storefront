@@ -31,7 +31,7 @@ export default function CategoryCards() {
                   <Icon className={`h-8 w-8 ${meta.textColor} opacity-90`} />
                   <div>
                     <p className={`text-base font-bold capitalize ${meta.textColor}`}>
-                      {category}
+                      {meta.label ?? category}
                     </p>
                     <p className={`mt-1 text-xs font-medium flex items-center gap-1 ${meta.textColor} opacity-80`}>
                       Shop now <ArrowRight className="h-3 w-3" />

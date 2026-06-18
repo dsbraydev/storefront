@@ -1,4 +1,4 @@
-import { createContext, useReducer, type ReactNode } from 'react'
+import { createContext, useReducer, useEffect, type ReactNode } from 'react'
 import type { CartItem, Product } from '../types'
 
 export type CartAction =
@@ -45,8 +45,23 @@ export function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
   }
 }
 
+const CART_STORAGE_KEY = 'storefront_cart'
+
+function loadCart(): CartItem[] {
+  try {
+    const saved = localStorage.getItem(CART_STORAGE_KEY)
+    return saved ? (JSON.parse(saved) as CartItem[]) : []
+  } catch {
+    return []
+  }
+}
+
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, dispatch] = useReducer(cartReducer, [])
+  const [items, dispatch] = useReducer(cartReducer, undefined, loadCart)
+
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items))
+  }, [items])
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0)
   const totalPrice = items.reduce(

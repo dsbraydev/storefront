@@ -26,15 +26,15 @@ export default function Footer() {
               Quality products, great prices. Shop with confidence.
             </p>
             <div className="mt-4 flex gap-3">
-              <a href="#" aria-label="Website" className="hover:text-white transition-colors">
+              <span aria-label="Website" className="text-gray-600">
                 <Globe className="h-5 w-5" />
-              </a>
-              <a href="#" aria-label="Email" className="hover:text-white transition-colors">
+              </span>
+              <span aria-label="Email" className="text-gray-600">
                 <Mail className="h-5 w-5" />
-              </a>
-              <a href="#" aria-label="More links" className="hover:text-white transition-colors">
+              </span>
+              <span aria-label="More links" className="text-gray-600">
                 <ExternalLink className="h-5 w-5" />
-              </a>
+              </span>
             </div>
           </div>
 
@@ -58,9 +58,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {supportLinks.map((label) => (
                 <li key={label}>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {label}
-                  </a>
+                  <span className="text-gray-500">{label}</span>
                 </li>
               ))}
             </ul>
@@ -72,9 +70,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {legalLinks.map((label) => (
                 <li key={label}>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {label}
-                  </a>
+                  <span className="text-gray-500">{label}</span>
                 </li>
               ))}
             </ul>

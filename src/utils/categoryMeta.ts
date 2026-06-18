@@ -4,6 +4,7 @@ export interface CategoryMeta {
   gradient: string
   textColor: string
   icon: LucideIcon
+  label?: string
 }
 
 export const categoryMeta: Record<string, CategoryMeta> = {
@@ -26,6 +27,7 @@ export const categoryMeta: Record<string, CategoryMeta> = {
     gradient: 'from-amber-400 to-yellow-500',
     textColor: 'text-gray-900',
     icon: Gem,
+    label: 'Jewelry',
   },
 }
 
