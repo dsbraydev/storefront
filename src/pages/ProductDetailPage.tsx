@@ -110,7 +110,7 @@ export default function ProductDetailPage() {
             <button
               onClick={() => product && addToCart(product)}
               disabled={adding !== 'idle'}
-              className="w-full inline-flex items-center justify-center gap-2 bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors disabled:opacity-80 text-base"
+              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-semibold py-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all disabled:opacity-80 text-base"
             >
               {adding === 'loading' && <Spinner />}
               {adding === 'done' && <Check className="h-5 w-5" />}

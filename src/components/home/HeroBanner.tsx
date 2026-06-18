@@ -30,7 +30,7 @@ export default function HeroBanner() {
 
         <p className="animate-fade-in mt-4 text-lg text-indigo-100 max-w-lg leading-relaxed"
           style={{ animationDelay: '160ms' }}>
-          Discover quality products across clothing, electronics, and jewellery — all at prices you'll love.
+          Discover quality products across clothing, electronics, and jewelry — all at prices you'll love.
         </p>
 
         <div className="animate-fade-in mt-8 flex flex-wrap gap-3"

@@ -6,7 +6,7 @@ const shopLinks = [
   { label: "Men's Clothing", to: "/products?category=men's clothing" },
   { label: "Women's Clothing", to: "/products?category=women's clothing" },
   { label: 'Electronics', to: '/products?category=electronics' },
-  { label: 'Jewellery', to: '/products?category=jewelery' },
+  { label: 'Jewelry', to: '/products?category=jewelery' },
 ]
 
 const supportLinks = ['FAQ', 'Shipping', 'Returns', 'Contact']

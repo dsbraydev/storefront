@@ -14,11 +14,11 @@ const CartItem = memo(function CartItem({ item, onRemove }: CartItemProps) {
   const { product, quantity } = item
 
   return (
-    <div className="flex gap-4 py-4">
+    <div className="flex gap-4 py-4 hover:bg-gray-50 -mx-4 px-4 rounded-lg transition-colors">
       <img
         src={product.image}
         alt={product.title}
-        className="h-20 w-20 shrink-0 rounded-md bg-gray-50 p-2 object-contain"
+        className="h-24 w-24 shrink-0 rounded-lg bg-white border border-gray-100 p-2 object-contain"
         onError={handleImageError}
       />
       <div className="flex flex-1 flex-col gap-1 min-w-0">

@@ -59,7 +59,7 @@ export default function CartPage() {
             ))}
           </div>
         </div>
-        <div>
+        <div className="lg:sticky lg:top-24">
           <CartSummary />
         </div>
       </div>

@@ -21,7 +21,7 @@ export default function CartSummary() {
       </div>
       <button
         disabled={totalItems === 0}
-        className="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-semibold py-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Proceed to Checkout
       </button>

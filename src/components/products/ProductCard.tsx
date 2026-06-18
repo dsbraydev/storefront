@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
-import { Check } from 'lucide-react'
+import { Check, Star } from 'lucide-react'
 import type { Product } from '../../types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import { useAddToCart } from '../../hooks/useAddToCart'
@@ -17,7 +17,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0 }: ProductCar
 
   return (
     <div
-      className="group animate-fade-in bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-200"
+      className="group animate-fade-in bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
       style={{ animationDelay: `${index * 40}ms` }}
     >
       <div className="aspect-square p-6 flex items-center justify-center bg-gray-50">
@@ -35,9 +35,16 @@ const ProductCard = memo(function ProductCard({ product, index = 0 }: ProductCar
         <h3 className="text-sm font-semibold text-gray-900 line-clamp-2 leading-snug flex-1">
           {product.title}
         </h3>
-        <span className="text-lg font-bold text-gray-900 mt-1">
-          {formatCurrency(product.price)}
-        </span>
+        <div className="flex items-center justify-between mt-1">
+          <span className="text-lg font-bold text-gray-900">
+            {formatCurrency(product.price)}
+          </span>
+          <div className="flex items-center gap-1">
+            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+            <span className="text-xs font-medium text-gray-700">{product.rating.rate}</span>
+            <span className="text-xs text-gray-400">({product.rating.count})</span>
+          </div>
+        </div>
         <div className="flex gap-2 pt-1">
           <Link
             to={`/products/${product.id}`}

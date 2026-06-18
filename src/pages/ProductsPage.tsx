@@ -53,6 +53,15 @@ export default function ProductsPage() {
 
   return (
     <div className="flex flex-col gap-6">
+      {/* Heading */}
+      <div>
+        <h1 className="text-2xl font-bold text-gray-900">All Products</h1>
+        <p className="text-sm text-gray-500 mt-1">
+          {filtered.length} {filtered.length === 1 ? 'product' : 'products'}
+          {search || activeCategory !== 'all' ? ' found' : ''}
+        </p>
+      </div>
+
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
