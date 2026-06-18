@@ -59,8 +59,9 @@ describe('ProductCard', () => {
   it('increments the count on repeated clicks', async () => {
     const user = userEvent.setup()
     renderProductCard()
-    const button = screen.getByRole('button', { name: /add to cart/i })
-    await user.click(button)
+    await user.click(screen.getByRole('button', { name: /add to cart/i }))
+    // Wait for loading + done states to clear (total ~1100ms) before second click
+    const button = await screen.findByRole('button', { name: /add to cart/i }, { timeout: 2000 })
     await user.click(button)
     expect(screen.getByTestId('total-items')).toHaveTextContent('2')
   })

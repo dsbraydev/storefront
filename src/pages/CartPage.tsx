@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
+import { ShoppingCart } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
 import CartItem from '../components/cart/CartItem'
 import CartSummary from '../components/cart/CartSummary'
-import CartIcon from '../components/ui/CartIcon'
 
 export default function CartPage() {
   const { items } = useCart()
@@ -10,7 +10,7 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
-        <CartIcon className="h-16 w-16 text-gray-300" strokeWidth={1} />
+        <ShoppingCart className="h-16 w-16 text-gray-300" strokeWidth={1} />
         <h2 className="mt-4 text-xl font-bold text-gray-900">Your cart is empty</h2>
         <p className="mt-1 text-sm text-gray-500">
           Looks like you haven&apos;t added anything yet.

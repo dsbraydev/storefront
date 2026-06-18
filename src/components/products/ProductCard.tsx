@@ -1,7 +1,9 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
+import { Check } from 'lucide-react'
 import type { Product } from '../../types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import { useCart } from '../../hooks/useCart'
+import Spinner from '../ui/Spinner'
 
 interface ProductCardProps {
   product: Product
@@ -10,6 +12,16 @@ interface ProductCardProps {
 
 const ProductCard = memo(function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { dispatch } = useCart()
+  const [adding, setAdding] = useState<'idle' | 'loading' | 'done'>('idle')
+
+  function handleAddToCart() {
+    setAdding('loading')
+    dispatch({ type: 'ADD_ITEM', payload: product })
+    setTimeout(() => {
+      setAdding('done')
+      setTimeout(() => setAdding('idle'), 600)
+    }, 500)
+  }
 
   return (
     <div
@@ -39,10 +51,13 @@ const ProductCard = memo(function ProductCard({ product, index = 0 }: ProductCar
             {formatCurrency(product.price)}
           </span>
           <button
-            onClick={() => dispatch({ type: 'ADD_ITEM', payload: product })}
-            className="bg-indigo-600 text-white text-sm font-medium px-3 py-1.5 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors"
+            onClick={handleAddToCart}
+            disabled={adding !== 'idle'}
+            className="inline-flex items-center justify-center gap-1.5 min-w-[108px] bg-indigo-600 text-white text-sm font-medium px-3 py-1.5 rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition-colors disabled:opacity-80"
           >
-            Add to Cart
+            {adding === 'loading' && <Spinner />}
+            {adding === 'done' && <Check className="h-4 w-4" />}
+            {adding === 'loading' ? 'Adding…' : adding === 'done' ? 'Added!' : 'Add to Cart'}
           </button>
         </div>
       </div>
