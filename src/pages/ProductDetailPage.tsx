@@ -1,29 +1,27 @@
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Star, Check } from 'lucide-react'
+import { ArrowLeft, Check } from 'lucide-react'
 import { useProducts } from '../hooks/useProducts'
 import { formatCurrency } from '../utils/formatCurrency'
 import { useAddToCart } from '../hooks/useAddToCart'
 import Spinner from '../components/ui/Spinner'
 import DetailSkeleton from '../components/ui/DetailSkeleton'
+import RatingStars from '../components/ui/RatingStars'
 import { handleImageError } from '../utils/imageFallback'
 
-function RatingStars({ rate, count }: { rate: number; count: number }) {
-  const filled = Math.round(rate)
-  return (
-    <div className="flex items-center gap-2">
-      <div className="flex items-center gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star
-            key={i}
-            className={`h-4 w-4 ${i < filled ? 'text-amber-400 fill-amber-400' : 'text-gray-300'}`}
-          />
-        ))}
-      </div>
-      <span className="text-sm text-gray-500">{rate} ({count} reviews)</span>
-    </div>
-  )
-}
 
+const notFound = (
+  <div className="flex flex-col items-center justify-center py-24 text-center">
+    <p className="text-lg font-semibold text-gray-900">Product not found</p>
+    <p className="mt-1 text-sm text-gray-500">This product may no longer be available.</p>
+    <Link
+      to="/products"
+      className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+    >
+      <ArrowLeft className="h-4 w-4" />
+      Back to Products
+    </Link>
+  </div>
+)
 
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -31,40 +29,10 @@ export default function ProductDetailPage() {
   const { adding, addToCart } = useAddToCart()
 
   if (isLoading) return <DetailSkeleton />
-
-  if (!id || isNaN(Number(id))) {
-    return (
-      <div className="flex flex-col items-center justify-center py-24 text-center">
-        <p className="text-lg font-semibold text-gray-900">Product not found</p>
-        <p className="mt-1 text-sm text-gray-500">This product may no longer be available.</p>
-        <Link
-          to="/products"
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Products
-        </Link>
-      </div>
-    )
-  }
+  if (!id || isNaN(Number(id))) return notFound
 
   const product = products?.find((p) => p.id === Number(id))
-
-  if (!product) {
-    return (
-      <div className="flex flex-col items-center justify-center py-24 text-center">
-        <p className="text-lg font-semibold text-gray-900">Product not found</p>
-        <p className="mt-1 text-sm text-gray-500">This product may no longer be available.</p>
-        <Link
-          to="/products"
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Products
-        </Link>
-      </div>
-    )
-  }
+  if (!product) return notFound
 
   return (
     <div className="max-w-4xl mx-auto">

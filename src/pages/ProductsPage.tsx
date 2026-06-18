@@ -4,7 +4,9 @@ import { Search } from 'lucide-react'
 import { useProducts, useCategories } from '../hooks/useProducts'
 import { useFilteredProducts } from '../hooks/useFilteredProducts'
 import ProductGrid from '../components/products/ProductGrid'
-import SkeletonCard from '../components/ui/SkeletonCard'
+import ProductGridSkeleton from '../components/ui/ProductGridSkeleton'
+import EmptyState from '../components/ui/EmptyState'
+import CategoryFilterButton from '../components/products/CategoryFilterButton'
 
 export default function ProductsPage() {
   const { data: products, isLoading, isError } = useProducts()
@@ -32,15 +34,7 @@ export default function ProductsPage() {
 
   const filtered = useFilteredProducts(products, search, activeCategory)
 
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <SkeletonCard key={i} />
-        ))}
-      </div>
-    )
-  }
+  if (isLoading) return <ProductGridSkeleton />
 
   if (isError) {
     return (
@@ -88,50 +82,34 @@ export default function ProductsPage() {
       )}
       {!categoriesError && !categoriesLoading && categories && categories.length > 0 && (
         <div className="flex flex-wrap gap-2">
-          <button
+          <CategoryFilterButton
+            label="All"
+            isActive={activeCategory === 'all'}
             onClick={() => handleCategoryClick('all')}
-            aria-current={activeCategory === 'all' ? 'true' : undefined}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              activeCategory === 'all'
-                ? 'bg-indigo-600 text-white'
-                : 'bg-white border border-gray-300 text-gray-600 hover:border-indigo-400 hover:text-indigo-600'
-            }`}
-          >
-            All
-          </button>
+          />
           {categories.map((category) => (
-            <button
+            <CategoryFilterButton
               key={category}
+              label={category}
+              isActive={activeCategory === category}
               onClick={() => handleCategoryClick(category)}
-              aria-current={activeCategory === category ? 'true' : undefined}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
-                activeCategory === category
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-white border border-gray-300 text-gray-600 hover:border-indigo-400 hover:text-indigo-600'
-              }`}
-            >
-              {category}
-            </button>
+            />
           ))}
         </div>
       )}
 
       {/* Results */}
       {filtered.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-24 text-center">
-          <Search className="h-12 w-12 text-gray-300" />
-          <p className="mt-4 text-lg font-semibold text-gray-900">No products found</p>
-          <p className="mt-1 text-sm text-gray-500">Try adjusting your search or filter.</p>
-          <button
-            onClick={() => {
-              setSearch('')
-              handleCategoryClick('all')
-            }}
-            className="mt-4 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
-          >
-            Clear filters
-          </button>
-        </div>
+        <EmptyState
+          icon={<Search className="h-12 w-12 text-gray-300" />}
+          title="No products found"
+          description="Try adjusting your search or filter."
+          action={{
+            label: 'Clear filters',
+            onClick: () => { setSearch(''); handleCategoryClick('all') },
+            variant: 'text',
+          }}
+        />
       ) : (
         <ProductGrid products={filtered} />
       )}

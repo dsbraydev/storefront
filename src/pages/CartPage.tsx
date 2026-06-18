@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react'
-import { Link } from 'react-router-dom'
 import { ShoppingCart } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
 import CartItem from '../components/cart/CartItem'
 import CartSummary from '../components/cart/CartSummary'
 import UndoToast from '../components/ui/UndoToast'
+import EmptyState from '../components/ui/EmptyState'
 import type { CartItem as CartItemType } from '../types'
 
 export default function CartPage() {
@@ -32,19 +32,12 @@ export default function CartPage() {
 
   if (items.length === 0 && !removedItem) {
     return (
-      <div className="flex flex-col items-center justify-center py-24 text-center">
-        <ShoppingCart className="h-16 w-16 text-gray-300" strokeWidth={1} />
-        <h2 className="mt-4 text-xl font-bold text-gray-900">Your cart is empty</h2>
-        <p className="mt-1 text-sm text-gray-500">
-          Looks like you haven&apos;t added anything yet.
-        </p>
-        <Link
-          to="/"
-          className="mt-6 bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition-colors"
-        >
-          Continue Shopping
-        </Link>
-      </div>
+      <EmptyState
+        icon={<ShoppingCart className="h-16 w-16 text-gray-300" strokeWidth={1} />}
+        title="Your cart is empty"
+        description="Looks like you haven't added anything yet."
+        action={{ label: 'Continue Shopping', to: '/' }}
+      />
     )
   }
 
