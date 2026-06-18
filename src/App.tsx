@@ -9,6 +9,7 @@ import StartupLoader from './components/ui/StartupLoader'
 import ProductGridSkeleton from './components/ui/ProductGridSkeleton'
 import DetailSkeleton from './components/ui/DetailSkeleton'
 import EmptyState from './components/ui/EmptyState'
+import Spinner from './components/ui/Spinner'
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 1 } },
@@ -36,22 +37,20 @@ export default function App() {
           <BrowserRouter>
             <ScrollToTop />
             <Layout>
-              <Suspense fallback={<ProductGridSkeleton />}>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/products" element={<ProductsPage />} />
-                  <Route path="/products/:id" element={<Suspense fallback={<DetailSkeleton />}><ProductDetailPage /></Suspense>} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="*" element={
-                    <EmptyState
-                      icon={<Search className="h-16 w-16 text-gray-600" strokeWidth={1} />}
-                      title="Page not found"
-                      description="The page you're looking for doesn't exist."
-                      action={{ label: 'Go home', to: '/' }}
-                    />
-                  } />
-                </Routes>
-              </Suspense>
+              <Routes>
+                <Route path="/" element={<Suspense fallback={<ProductGridSkeleton />}><HomePage /></Suspense>} />
+                <Route path="/products" element={<Suspense fallback={<ProductGridSkeleton />}><ProductsPage /></Suspense>} />
+                <Route path="/products/:id" element={<Suspense fallback={<DetailSkeleton />}><ProductDetailPage /></Suspense>} />
+                <Route path="/cart" element={<Suspense fallback={<div className="flex justify-center mt-24"><Spinner className="h-8 w-8" /></div>}><CartPage /></Suspense>} />
+                <Route path="*" element={
+                  <EmptyState
+                    icon={<Search className="h-16 w-16 text-gray-600" strokeWidth={1} />}
+                    title="Page not found"
+                    description="The page you're looking for doesn't exist."
+                    action={{ label: 'Go home', to: '/' }}
+                  />
+                } />
+              </Routes>
             </Layout>
           </BrowserRouter>
         </CartProvider>
