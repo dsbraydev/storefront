@@ -92,13 +92,13 @@ src/
 
 ---
 
-### Phase 3 — Product Listing
-- [ ] `src/components/products/ProductCard.tsx` — `React.memo`; image, title, category badge, price, "Add to Cart" button
-- [ ] `src/components/products/ProductGrid.tsx` — responsive grid
-- [ ] `src/components/ui/SkeletonCard.tsx` — loading placeholder
-- [ ] `StorePage.tsx` — loading skeletons / error state / product grid
+### Phase 3 — Product Listing ✅
+- [x] `src/components/products/ProductCard.tsx` — `React.memo`; image, title, category badge, price, "Add to Cart" button
+- [x] `src/components/products/ProductGrid.tsx` — responsive grid
+- [x] `src/components/ui/SkeletonCard.tsx` — loading placeholder
+- [x] `StorePage.tsx` — loading skeletons / error state / product grid
 
-**Verify:** Products display; skeletons on load; error state on network failure
+**Verify:** Products display; skeletons on load; error state on network failure ✅
 
 **Commit:** `feat: phase 3 — product listing`
 
