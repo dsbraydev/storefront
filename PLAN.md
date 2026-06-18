@@ -69,13 +69,13 @@ src/
 
 ---
 
-### Phase 1 — Project Setup (Routing Shell + Providers)
-- [ ] `App.tsx` — `QueryClientProvider`, `CartProvider` (placeholder), `BrowserRouter` with `/` and `/cart` routes
-- [ ] `src/components/layout/Header.tsx` — app name + cart icon linking to `/cart`
-- [ ] `src/components/layout/Layout.tsx` — wraps Header + children
-- [ ] `src/context/CartContext.tsx` — context shell (no logic yet)
+### Phase 1 — Project Setup (Routing Shell + Providers) ✅
+- [x] `App.tsx` — `QueryClientProvider`, `CartProvider` (placeholder), `BrowserRouter` with `/` and `/cart` routes
+- [x] `src/components/layout/Header.tsx` — app name + cart icon linking to `/cart`
+- [x] `src/components/layout/Layout.tsx` — wraps Header + children
+- [x] `src/context/CartContext.tsx` — context shell (no logic yet)
 
-**Verify:** Both routes render; header visible on all pages
+**Verify:** Both routes render; header visible on all pages ✅
 
 **Commit:** `feat: phase 1 — routing shell and providers`
 
