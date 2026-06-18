@@ -5,6 +5,8 @@ import { CartProvider } from './context/CartContext'
 import Layout from './components/layout/Layout'
 import ScrollToTop from './components/layout/ScrollToTop'
 import StartupLoader from './components/ui/StartupLoader'
+import SkeletonCard from './components/ui/SkeletonCard'
+import DetailSkeleton from './components/ui/DetailSkeleton'
 
 const queryClient = new QueryClient()
 
@@ -14,9 +16,10 @@ const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'))
 const CartPage = lazy(() => import('./pages/CartPage'))
 
 export default function App() {
-  const [ready, setReady] = useState(false)
+  const [ready, setReady] = useState(() => window.location.pathname !== '/')
 
   useEffect(() => {
+    if (ready) return
     const t = setTimeout(() => setReady(true), 1500)
     return () => clearTimeout(t)
   }, [])
@@ -31,15 +34,17 @@ export default function App() {
             <Layout>
               <Suspense
                 fallback={
-                  <div className="flex items-center justify-center py-24 text-gray-400">
-                    Loading…
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <SkeletonCard key={i} />
+                    ))}
                   </div>
                 }
               >
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/products" element={<ProductsPage />} />
-                  <Route path="/products/:id" element={<ProductDetailPage />} />
+                  <Route path="/products/:id" element={<Suspense fallback={<DetailSkeleton />}><ProductDetailPage /></Suspense>} />
                   <Route path="/cart" element={<CartPage />} />
                 </Routes>
               </Suspense>
