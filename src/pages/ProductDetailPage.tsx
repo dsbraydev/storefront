@@ -80,9 +80,7 @@ export default function ProductDetailPage() {
               disabled={adding !== 'idle'}
               className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold py-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 transition-all disabled:opacity-80 text-base"
             >
-              {adding === 'loading' && <Spinner />}
-              {adding === 'done' && <Check className="h-5 w-5" />}
-              {adding === 'loading' ? 'Adding…' : adding === 'done' ? 'Added to Cart!' : 'Add to Cart'}
+              {adding === 'loading' ? <Spinner className="h-5 w-5" /> : adding === 'done' ? <Check className="h-5 w-5" /> : 'Add to Cart'}
             </button>
           </div>
         </div>
