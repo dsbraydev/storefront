@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useProducts } from '../../hooks/useProducts'
 import ProductCard from '../products/ProductCard'
 import ProductGridSkeleton from '../ui/ProductGridSkeleton'
+import SlideLink from '../ui/SlideLink'
 
 export default function FeaturedProducts() {
   const { data: products, isLoading } = useProducts()
@@ -19,12 +19,9 @@ export default function FeaturedProducts() {
     <section>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Featured Products</h2>
-        <Link
-          to="/products"
-          className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center gap-1 transition-colors"
-        >
+        <SlideLink to="/products" className="text-sm font-medium text-indigo-600">
           View all <ArrowRight className="h-4 w-4" />
-        </Link>
+        </SlideLink>
       </div>
 
       {isLoading

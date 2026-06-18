@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ShoppingCart, Menu, X } from 'lucide-react'
 import { useCart } from '../../hooks/useCart'
+import SlideText from '../ui/SlideText'
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -31,12 +32,12 @@ export default function Header() {
               to={link.to}
               end={link.to === '/'}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors ${
+                `group text-sm font-medium transition-colors ${
                   isActive ? 'text-indigo-600' : 'text-gray-600 hover:text-gray-900'
                 }`
               }
             >
-              {link.label}
+              <SlideText>{link.label}</SlideText>
             </NavLink>
           ))}
         </nav>
