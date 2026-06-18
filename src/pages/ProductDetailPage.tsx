@@ -32,6 +32,22 @@ export default function ProductDetailPage() {
 
   if (isLoading) return <DetailSkeleton />
 
+  if (!id || isNaN(Number(id))) {
+    return (
+      <div className="flex flex-col items-center justify-center py-24 text-center">
+        <p className="text-lg font-semibold text-gray-900">Product not found</p>
+        <p className="mt-1 text-sm text-gray-500">This product may no longer be available.</p>
+        <Link
+          to="/products"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Products
+        </Link>
+      </div>
+    )
+  }
+
   const product = products?.find((p) => p.id === Number(id))
 
   if (!product) {

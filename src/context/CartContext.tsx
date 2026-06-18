@@ -42,6 +42,8 @@ export function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
       )
     case 'CLEAR_CART':
       return []
+    default:
+      return state
   }
 }
 
@@ -60,7 +62,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [items, dispatch] = useReducer(cartReducer, undefined, loadCart)
 
   useEffect(() => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items))
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items))
+    } catch {
+      // Silently ignore write failures (quota exceeded, private browsing)
+    }
   }, [items])
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0)

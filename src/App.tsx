@@ -8,7 +8,9 @@ import StartupLoader from './components/ui/StartupLoader'
 import SkeletonCard from './components/ui/SkeletonCard'
 import DetailSkeleton from './components/ui/DetailSkeleton'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { retry: 1 } },
+})
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const ProductsPage = lazy(() => import('./pages/ProductsPage'))

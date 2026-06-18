@@ -5,6 +5,8 @@ interface StartupLoaderProps {
 export default function StartupLoader({ visible }: StartupLoaderProps) {
   return (
     <div
+      role="status"
+      aria-label="Loading"
       className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-500 ${
         visible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}

@@ -52,7 +52,6 @@ export default function Header() {
             <ShoppingCart className="h-6 w-6" />
             {totalItems > 0 && (
               <span
-                key={totalItems}
                 className="animate-scale-pop absolute -top-0.5 -right-0.5 h-5 w-5 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center"
               >
                 {totalItems > 99 ? '99+' : totalItems}

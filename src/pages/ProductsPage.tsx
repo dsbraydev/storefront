@@ -1,7 +1,8 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { useProducts, useCategories } from '../hooks/useProducts'
+import { useFilteredProducts } from '../hooks/useFilteredProducts'
 import ProductGrid from '../components/products/ProductGrid'
 import SkeletonCard from '../components/ui/SkeletonCard'
 
@@ -29,15 +30,7 @@ export default function ProductsPage() {
     }
   }
 
-  const filtered = useMemo(() => {
-    if (!products) return []
-    const term = search.toLowerCase().trim()
-    return products.filter((p) => {
-      const matchesCategory = activeCategory === 'all' || p.category === activeCategory
-      const matchesSearch = term === '' || p.title.toLowerCase().includes(term)
-      return matchesCategory && matchesSearch
-    })
-  }, [products, search, activeCategory])
+  const filtered = useFilteredProducts(products, search, activeCategory)
 
   if (isLoading) {
     return (
@@ -65,6 +58,7 @@ export default function ProductsPage() {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
         <input
           type="search"
+          aria-label="Search products"
           placeholder="Search products…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -87,6 +81,7 @@ export default function ProductsPage() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => handleCategoryClick('all')}
+            aria-current={activeCategory === 'all' ? 'true' : undefined}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
               activeCategory === 'all'
                 ? 'bg-indigo-600 text-white'
@@ -99,6 +94,7 @@ export default function ProductsPage() {
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
+              aria-current={activeCategory === category ? 'true' : undefined}
               className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
                 activeCategory === category
                   ? 'bg-indigo-600 text-white'

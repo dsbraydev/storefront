@@ -1,5 +1,6 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { useProducts, useCategories } from '../hooks/useProducts'
+import { useFilteredProducts } from '../hooks/useFilteredProducts'
 import ProductGrid from '../components/products/ProductGrid'
 import SkeletonCard from '../components/ui/SkeletonCard'
 
@@ -10,16 +11,7 @@ export default function StorePage() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
 
-  const filtered = useMemo(() => {
-    if (!products) return []
-    const term = search.toLowerCase().trim()
-    return products.filter((p) => {
-      const matchesCategory =
-        activeCategory === 'all' || p.category === activeCategory
-      const matchesSearch = term === '' || p.title.toLowerCase().includes(term)
-      return matchesCategory && matchesSearch
-    })
-  }, [products, search, activeCategory])
+  const filtered = useFilteredProducts(products, search, activeCategory)
 
   if (isLoading) {
     return (
@@ -47,6 +39,7 @@ export default function StorePage() {
       <div className="flex flex-col sm:flex-row gap-3">
         <input
           type="search"
+          aria-label="Search products"
           placeholder="Search products…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -68,6 +61,7 @@ export default function StorePage() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setActiveCategory('all')}
+            aria-current={activeCategory === 'all' ? 'true' : undefined}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
               activeCategory === 'all'
                 ? 'bg-indigo-600 text-white'
@@ -80,6 +74,7 @@ export default function StorePage() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
+              aria-current={activeCategory === category ? 'true' : undefined}
               className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
                 activeCategory === category
                   ? 'bg-indigo-600 text-white'
