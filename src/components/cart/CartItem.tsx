@@ -36,7 +36,10 @@ export default function CartItem({ item }: CartItemProps) {
             >
               −
             </button>
-            <span className="w-8 text-center text-sm font-semibold text-gray-900">
+            <span
+              data-testid="qty-display"
+              className="w-8 text-center text-sm font-semibold text-gray-900"
+            >
               {quantity}
             </span>
             <button

@@ -16,7 +16,7 @@ export interface CartContextValue {
 
 export const CartContext = createContext<CartContextValue | null>(null)
 
-function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
+export function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
   switch (action.type) {
     case 'ADD_ITEM': {
       const existing = state.find((item) => item.product.id === action.payload.id)

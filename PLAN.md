@@ -152,15 +152,15 @@ src/
 
 ---
 
-### Phase 8 — Testing
-- [ ] msw handlers for `GET /products` and `GET /categories`
-- [ ] Jest + jsdom config with `@testing-library/jest-dom` setup
-- [ ] `cartReducer.test.ts` — all actions + derived values
-- [ ] `ProductCard.test.tsx` — renders correctly; Add to Cart fires action
-- [ ] `CartItem.test.tsx` — renders; qty and remove work
-- [ ] `StorePage.test.tsx` — skeletons → cards → error state
+### Phase 8 — Testing ✅
+- [x] msw handlers for `GET /products` and `GET /categories`
+- [x] Vitest + jsdom config with `@testing-library/jest-dom` setup (switched from Jest — Vitest is the correct tool for Vite projects; handles ESM natively)
+- [x] `cartReducer.test.ts` — all actions + derived values
+- [x] `ProductCard.test.tsx` — renders correctly; Add to Cart fires action
+- [x] `CartItem.test.tsx` — renders; qty and remove work
+- [x] `StorePage.test.tsx` — skeletons → cards → error state
 
-**Verify:** `npm test` all green
+**Verify:** 27/27 tests pass ✅
 
 **Commit:** `feat: phase 8 — tests`
 
