@@ -127,13 +127,13 @@ src/
 
 ---
 
-### Phase 6 — Filtering & Search
-- [ ] Search input in `StorePage` — client-side, case-insensitive filter on title
-- [ ] Category filter buttons from `useCategories()` — "All" default
-- [ ] Combined filter (category AND search) in `useMemo`
-- [ ] Filter state in `StorePage` local state
+### Phase 6 — Filtering & Search ✅
+- [x] Search input in `StorePage` — client-side, case-insensitive filter on title
+- [x] Category filter buttons from `useCategories()` — "All" default
+- [x] Combined filter (category AND search) in `useMemo`
+- [x] Filter state in `StorePage` local state
 
-**Verify:** Search + category filter work independently and combined
+**Verify:** Search + category filter work independently and combined ✅
 
 **Commit:** `feat: phase 6 — filtering and search`
 
