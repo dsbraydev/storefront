@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+button, [role="button"], a {
+  cursor: pointer;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
