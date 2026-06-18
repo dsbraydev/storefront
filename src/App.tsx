@@ -10,6 +10,7 @@ const queryClient = new QueryClient()
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const ProductsPage = lazy(() => import('./pages/ProductsPage'))
+const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'))
 const CartPage = lazy(() => import('./pages/CartPage'))
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/products" element={<ProductsPage />} />
+                  <Route path="/products/:id" element={<ProductDetailPage />} />
                   <Route path="/cart" element={<CartPage />} />
                 </Routes>
               </Suspense>

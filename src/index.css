@@ -32,3 +32,23 @@ button, [role="button"], a {
 @utility animate-scale-pop {
   animation: scale-pop 0.3s ease-out both;
 }
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50% }
+  50%  { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+@utility animate-gradient-shift {
+  background: linear-gradient(
+    270deg,
+    #4f46e5,
+    #7c3aed,
+    #db2777,
+    #2563eb,
+    #0d9488,
+    #4f46e5
+  );
+  background-size: 500% 500%;
+  animation: gradient-shift 18s ease infinite;
+}

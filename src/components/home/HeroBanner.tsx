@@ -3,7 +3,7 @@ import { ArrowRight, Tag } from 'lucide-react'
 
 export default function HeroBanner() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 rounded-2xl">
+    <section className="relative overflow-hidden animate-gradient-shift rounded-2xl">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

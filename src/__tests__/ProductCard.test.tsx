@@ -52,16 +52,16 @@ describe('ProductCard', () => {
     const user = userEvent.setup()
     renderProductCard()
     expect(screen.getByTestId('total-items')).toHaveTextContent('0')
-    await user.click(screen.getByRole('button', { name: /add to cart/i }))
+    await user.click(screen.getByRole('button', { name: /^add$/i }))
     expect(screen.getByTestId('total-items')).toHaveTextContent('1')
   })
 
   it('increments the count on repeated clicks', async () => {
     const user = userEvent.setup()
     renderProductCard()
-    await user.click(screen.getByRole('button', { name: /add to cart/i }))
+    await user.click(screen.getByRole('button', { name: /^add$/i }))
     // Wait for loading + done states to clear (total ~1100ms) before second click
-    const button = await screen.findByRole('button', { name: /add to cart/i }, { timeout: 2000 })
+    const button = await screen.findByRole('button', { name: /^add$/i }, { timeout: 2000 })
     await user.click(button)
     expect(screen.getByTestId('total-items')).toHaveTextContent('2')
   })
