@@ -104,12 +104,12 @@ src/
 
 ---
 
-### Phase 4 — Cart State
-- [ ] `src/context/CartContext.tsx` — `useReducer` with `ADD_ITEM`, `REMOVE_ITEM`, `UPDATE_QUANTITY`, `CLEAR_CART`; derived `totalItems` + `totalPrice`
-- [ ] `src/hooks/useCart.ts` — typed accessor hook with provider guard
-- [ ] `Header.tsx` — `totalItems` badge on cart icon
+### Phase 4 — Cart State ✅
+- [x] `src/context/CartContext.tsx` — `useReducer` with `ADD_ITEM`, `REMOVE_ITEM`, `UPDATE_QUANTITY`, `CLEAR_CART`; derived `totalItems` + `totalPrice`
+- [x] `src/hooks/useCart.ts` — typed accessor hook with provider guard
+- [x] `Header.tsx` — `totalItems` badge on cart icon
 
-**Verify:** Badge updates when items are added
+**Verify:** Badge updates when items are added ✅
 
 **Commit:** `feat: phase 4 — cart state`
 
